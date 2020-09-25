@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace Countdown
 {
-    [RequireComponent(typeof(TMP_Dropdown))]
     public class YearDropdown : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] private TMP_Dropdown dropdown = null;
+
         public int currentYear { get; private set; }
 
         private void Start()
         {
             currentYear = System.DateTime.Today.Year;
-            
-            TMP_Dropdown dropdown = GetComponent<TMP_Dropdown>();
 
             for (int i = 0; i <= 10; i++)
             {
