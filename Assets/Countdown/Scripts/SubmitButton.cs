@@ -19,6 +19,13 @@ namespace Countdown
 
         public void UpdateActive()
         {
+            if (string.IsNullOrWhiteSpace(titleInput.text))
+            {
+                button.interactable = false;
+                text.color = ColorScheme.midColor;
+                return;
+            }
+
             int year = dateInput.year;
             int month = dateInput.month;
             int day = dateInput.day;
@@ -30,12 +37,12 @@ namespace Countdown
             try
             {
                 dateTime = new DateTime(year, month, day, hour, minute, second);
-                button.enabled = true;
+                button.interactable = true;
                 text.color = ColorScheme.specialColor;
             }
             catch
             {
-                button.enabled = false;
+                button.interactable = false;
                 text.color = ColorScheme.midColor;
             }
         }

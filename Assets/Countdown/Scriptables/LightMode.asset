@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cad845a57244c0f81b07c43894cbd6, type: 3}
   m_Name: LightMode
   m_EditorClassIdentifier: 
-  maxColor: {r: 0, g: 0, b: 0, a: 0}
-  midColor: {r: 0, g: 0, b: 0, a: 0}
-  minColor: {r: 0, g: 0, b: 0, a: 0}
-  specialColor: {r: 0, g: 0, b: 0, a: 0}
+  maxColor: {r: 1, g: 1, b: 1, a: 1}
+  midColor: {r: 0.85490197, g: 0.8627451, b: 0.8784314, a: 1}
+  minColor: {r: 0.1254902, g: 0.12941177, b: 0.14117648, a: 1}
+  specialColor: {r: 0.101960786, g: 0.45490196, b: 0.9137255, a: 1}

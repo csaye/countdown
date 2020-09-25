@@ -5,14 +5,15 @@ namespace Countdown
     public class ColorScheme : MonoBehaviour
     {
         [Header("Attributes")]
-        [SerializeField] private ColorSchemeScriptable lightMode, darkMode;
+        [SerializeField] private ColorSchemeScriptable lightMode = null;
+        [SerializeField] private ColorSchemeScriptable darkMode = null;
 
         // [Header("Max Color References")]
         // [Header("Mid Color References")]
         // [Header("Min Color References")]
         // [Header("Special Color References")]
 
-        public static Color maxColor, midColor, minColor, specialColor;
+        public static Color maxColor = new Color(), midColor = new Color(), minColor = new Color(), specialColor = new Color();
 
         public enum Scheme
         {
@@ -34,11 +35,11 @@ namespace Countdown
             {
                 case Scheme.LightMode:
                     SetColor(lightMode);
+                    break;
                 case Scheme.DarkMode:
                     SetColor(darkMode);
+                    break;
             }
-
-            UpdateColorScheme();
         }
 
         private void SetColor(ColorSchemeScriptable scheme)
@@ -49,9 +50,24 @@ namespace Countdown
             SetSpecialColor(scheme.specialColor);
         }
 
-        private void UpdateColorScheme()
+        private void SetMaxColor(Color color)
         {
+            maxColor = color;
+        }
 
+        private void SetMidColor(Color color)
+        {
+            midColor = color;
+        }
+
+        private void SetMinColor(Color color)
+        {
+            minColor = color;
+        }
+
+        private void SetSpecialColor(Color color)
+        {
+            specialColor = color;
         }
     }
 }
