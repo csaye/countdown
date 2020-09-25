@@ -15,7 +15,9 @@ namespace Countdown
         [SerializeField] private TMP_Dropdown dayInput = null;
         [SerializeField] private TMP_Dropdown yearInput = null;
         [SerializeField] private YearDropdown yearDropdown = null;
-        // [SerializeField] private CountdownList countdownList = null;
+        [SerializeField] private CountdownList countdownList = null;
+
+        private DateTime dateTime;
 
         public void UpdateActive()
         {
@@ -25,7 +27,7 @@ namespace Countdown
             
             try
             {
-                DateTime date = new DateTime(year, month, day);
+                dateTime = new DateTime(year, month, day);
                 button.enabled = true;
                 text.color = ColorScheme.specialColor;
             }
@@ -38,7 +40,7 @@ namespace Countdown
 
         public void OnClick()
         {
-            
+            countdownList.CreateCountdown(titleInput.text, dateTime);
         }
     }
 }
