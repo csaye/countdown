@@ -13,6 +13,7 @@ namespace Countdown
         {
             GameObject countdownObj = Instantiate(countdownPrefab, transform.position, Quaternion.identity, transform);
             countdownObj.GetComponent<CountdownItem>().Initialize(title, time);
+            countdownObj.transform.SetSiblingIndex(0);
         }
     }
 }

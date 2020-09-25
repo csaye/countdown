@@ -12,7 +12,7 @@ namespace Countdown
         [SerializeField] TextMeshProUGUI countdownText = null;
 
         private const string startSmallString = "<size=32>", endSmallString = "</size>";
-        private const string timeUpString = "00<size=32>y</size> 000<size=32>d</size> 00<size=32>h</size> 00<size=32>m</size> 00<size=32>s</size>";
+        private const string timeUpString = "0<size=32>d</size> 00<size=32>h</size> 00<size=32>m</size> 00<size=32>s</size>";
 
         private DateTime countdownTime, currentDateTime, now;
         private TimeSpan countdownLength;
@@ -60,20 +60,9 @@ namespace Countdown
                 return;
             }
 
-            // Calculate years
-            int years = 0;
-            while (currentDateTime.Year + years < countdownTime.Year) years++;
+            // Calculate interval using System.TimeSpan class
             countdownLength = countdownTime - currentDateTime;
-
-            // Calculate days based on leap years
             days = countdownLength.Days;
-            for (int i = 0; i < years - 1; i++)
-            {
-                int year = currentDateTime.Year + i;
-                int daysInYear = isLeapYear(year) ? 366 : 365;
-                days -= daysInYear;
-            }
-
             hours = countdownLength.Hours;
             minutes = countdownLength.Minutes;
             seconds = countdownLength.Seconds;
@@ -81,10 +70,6 @@ namespace Countdown
             StringBuilder sb = new StringBuilder();
 
             // Convert time span into readable format
-            if (years < 10) sb.Append(0);
-            sb.Append($"{years.ToString()}{startSmallString}y{endSmallString} ");
-            if (days < 100) sb.Append(0);
-            if (days < 10) sb.Append(0);
             sb.Append($"{days.ToString()}{startSmallString}d{endSmallString} ");
             if (hours < 10) sb.Append(0);
             sb.Append($"{hours.ToString()}{startSmallString}h{endSmallString} ");
@@ -94,18 +79,6 @@ namespace Countdown
             sb.Append($"{seconds.ToString()}{startSmallString}s{endSmallString}");
 
             countdownText.text = sb.ToString();
-        }
-
-        // Returns whether given year is a leap year
-        private bool isLeapYear(int year)
-        {
-            if (year % 4 == 0)
-            {
-                if (year % 400 == 0) return true;
-                if (year % 100 == 0) return false;
-                return true;
-            }
-            return false;
         }
     }
 }
