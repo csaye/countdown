@@ -4,6 +4,9 @@ namespace Countdown
 {
     public class ColorScheme : MonoBehaviour
     {
+        [Header("Attributes")]
+        [SerializeField] private ColorSchemeScriptable lightMode, darkMode;
+
         // [Header("Max Color References")]
         // [Header("Mid Color References")]
         // [Header("Min Color References")]
@@ -17,10 +20,33 @@ namespace Countdown
             DarkMode
         }
 
-        public void SetColorScheme(Scheme scheme, Color _maxColor, Color _midColor, Color _minColor, Color _specialColor)
+        private void Start()
+        {
+            Scheme scheme = (Scheme)PlayerPrefs.GetInt("ColorScheme", 0);
+            SetColorScheme(scheme);
+        }
+
+        public void SetColorScheme(Scheme scheme)
         {
             PlayerPrefs.SetInt("ColorScheme", (int)scheme);
+
+            switch (scheme)
+            {
+                case Scheme.LightMode:
+                    SetColor(lightMode);
+                case Scheme.DarkMode:
+                    SetColor(darkMode);
+            }
+
             UpdateColorScheme();
+        }
+
+        private void SetColor(ColorSchemeScriptable scheme)
+        {
+            SetMaxColor(scheme.maxColor);
+            SetMidColor(scheme.midColor);
+            SetMinColor(scheme.minColor);
+            SetSpecialColor(scheme.specialColor);
         }
 
         private void UpdateColorScheme()
