@@ -34,7 +34,7 @@ namespace Countdown
             UpdateCountdowns();
         }
 
-        private void UpdateCountdowns()
+        public void UpdateCountdowns()
         {
             for (int i = 0; i < countdowns.Count; i++)
             {

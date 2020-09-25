@@ -10852,7 +10852,7 @@ GameObject:
   - component: {fileID: 2001658609}
   - component: {fileID: 2001658610}
   m_Layer: 5
-  m_Name: AutomaticDeleteToggle
+  m_Name: DeleteAutomaticallyToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12474,6 +12474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceaa27796479b42a893d2fd004d984fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownList: {fileID: 2026608051}
+  deleteAutomaticallyToggle: {fileID: 2001658610}
 --- !u!1 &2124378783
 GameObject:
   m_ObjectHideFlags: 0
