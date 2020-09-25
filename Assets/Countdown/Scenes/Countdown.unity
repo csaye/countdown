@@ -11069,7 +11069,6 @@ GameObject:
   - component: {fileID: 2080191694}
   - component: {fileID: 2080191693}
   - component: {fileID: 2080191692}
-  - component: {fileID: 2080191695}
   m_Layer: 5
   m_Name: YearDropdown
   m_TagString: Untagged
@@ -11400,19 +11399,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080191690}
   m_CullTransparentMesh: 0
---- !u!114 &2080191695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080191690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b99c8e1901acb40d0ba945649bb990ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdown: {fileID: 2080191692}
 --- !u!1 &2083947756
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ namespace Countdown
         private const string startSmallString = "<size=32>", endSmallString = "</size>";
         private const string timeUpString = "00<size=32>y</size> 000<size=32>d</size> 00<size=32>h</size> 00<size=32>m</size> 00<size=32>s</size>";
 
-        private DateTime countdownTime, currentDateTime;
+        private DateTime countdownTime, currentDateTime, now;
         private TimeSpan countdownLength;
         private int lastUpdateSecond = -1;
         int years, days, hours, minutes, seconds;
@@ -39,12 +39,13 @@ namespace Countdown
         private void Update()
         {
             if (!tickClock) return;
-            DateTime now = DateTime.Now;
+
             // Necessary to ensure milliseconds of current time is zero
+            now = DateTime.Now;
             currentDateTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+            
             // Only tick once a second
             if (currentDateTime.Second == lastUpdateSecond) return;
-            Debug.Log(currentDateTime.Millisecond);
             lastUpdateSecond = currentDateTime.Second;
             SetCountdownText();
         }
@@ -58,9 +59,13 @@ namespace Countdown
                 tickClock = false;
                 return;
             }
+
+            // Calculate years
             int years = 0;
             while (currentDateTime.Year + years < countdownTime.Year) years++;
             countdownLength = countdownTime - currentDateTime;
+
+            // Calculate days based on leap years
             days = countdownLength.Days;
             for (int i = 0; i < years - 1; i++)
             {
@@ -68,9 +73,11 @@ namespace Countdown
                 int daysInYear = isLeapYear(year) ? 366 : 365;
                 days -= daysInYear;
             }
+
             hours = countdownLength.Hours;
             minutes = countdownLength.Minutes;
             seconds = countdownLength.Seconds;
+
             StringBuilder sb = new StringBuilder();
 
             // Convert time span into readable format

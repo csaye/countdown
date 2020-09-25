@@ -23,12 +23,14 @@ namespace Countdown
 
         private void Start()
         {
+            // Loads last used color scheme
             Scheme scheme = (Scheme)PlayerPrefs.GetInt("ColorScheme", 0);
             SetColorScheme(scheme);
         }
 
         public void SetColorScheme(Scheme scheme)
         {
+            // Saves color scheme for reload
             PlayerPrefs.SetInt("ColorScheme", (int)scheme);
 
             switch (scheme)

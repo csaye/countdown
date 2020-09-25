@@ -8,6 +8,7 @@ namespace Countdown
         [Header("References")]
         [SerializeField] private GameObject countdownPrefab = null;
 
+        // Creates and initializes a new countdown item object
         public void CreateCountdown(string title, DateTime time)
         {
             GameObject countdownObj = Instantiate(countdownPrefab, transform.position, Quaternion.identity, transform);

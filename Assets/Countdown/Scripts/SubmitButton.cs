@@ -19,6 +19,7 @@ namespace Countdown
 
         public void UpdateActive()
         {
+            // Return if no title given
             if (string.IsNullOrWhiteSpace(titleInput.text))
             {
                 button.interactable = false;
@@ -40,6 +41,7 @@ namespace Countdown
                 button.interactable = true;
                 text.color = ColorScheme.specialColor;
             }
+            // Return if invalid date given
             catch
             {
                 button.interactable = false;
