@@ -8,11 +8,35 @@ namespace Countdown
     {
         [Header("References")]
         [SerializeField] private TMP_Dropdown hourDropdown = null;
+        [SerializeField] private TMP_Dropdown twelveHourDropdown = null;
         [SerializeField] private TMP_Dropdown minuteDropdown = null;
         [SerializeField] private TMP_Dropdown secondDropdown = null;
+        [SerializeField] private TMP_Dropdown ampmDropdown = null;
 
-        public int hour { get { return hourDropdown.value; } }
+        public int hour
+        {
+            get
+            {
+                if (!useTwelveHourTime) return hourDropdown.value;
+                return twelveHourDropdown.value + (ampmDropdown.value * 12);
+            }
+        }
         public int minute { get { return minuteDropdown.value; } }
         public int second { get { return secondDropdown.value; } }
+
+        private bool useTwelveHourTime = false;
+
+        public void UpdateTimeDisplay()
+        {
+            useTwelveHourTime = (PlayerPrefs.GetInt("UseTwelveHourTime", 0) == 1);
+
+            // Activate dropdowns based on time system
+            ampmDropdown.gameObject.SetActive(useTwelveHourTime);
+            twelveHourDropdown.gameObject.SetActive(useTwelveHourTime);
+            hourDropdown.gameObject.SetActive(!useTwelveHourTime);
+
+            RectTransform rectTransform = (RectTransform)transform;
+            rectTransform.localPosition = useTwelveHourTime ? new Vector2(-35, 0) : Vector2.zero;
+        }
     }
 }
