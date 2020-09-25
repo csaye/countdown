@@ -14,9 +14,16 @@ namespace Countdown
         {
             currentYear = System.DateTime.Today.Year;
 
-            for (int i = 0; i <= 10; i++)
+            // for (int i = 0; i <= 10; i++)
+            // {
+            //     dropdown.options[i].text = (currentYear + i).ToString();
+            // }
+            for (int i = 0; i < 60; i++)
             {
-                dropdown.options[i].text = (currentYear + i).ToString();
+                string s = "00:00:";
+                if (i < 10) s += "0";
+                s += i.ToString();
+                dropdown.options[i].text = s;
             }
         }
     }
