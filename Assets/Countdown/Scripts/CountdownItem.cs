@@ -25,9 +25,9 @@ namespace Countdown
         {
             titleText.text = title;
             countdownTime = dateTime;
-
             currentDateTime = DateTime.Now;
             SetCountdownText();
+            // Start clock tick
             tickClock = true;
         }
 
@@ -39,13 +39,19 @@ namespace Countdown
         private void Update()
         {
             if (!tickClock) return;
-            currentDateTime = DateTime.Now;
+            DateTime now = DateTime.Now;
+            // Necessary to ensure milliseconds of current time is zero
+            currentDateTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+            // Only tick once a second
             if (currentDateTime.Second == lastUpdateSecond) return;
+            Debug.Log(currentDateTime.Millisecond);
+            lastUpdateSecond = currentDateTime.Second;
             SetCountdownText();
         }
 
         private void SetCountdownText()
         {
+            // If time reached, stop clock tick
             if (currentDateTime.CompareTo(countdownTime) >= 0)
             {
                 countdownText.text = timeUpString;
@@ -67,6 +73,7 @@ namespace Countdown
             seconds = countdownLength.Seconds;
             StringBuilder sb = new StringBuilder();
 
+            // Convert time span into readable format
             if (years < 10) sb.Append(0);
             sb.Append($"{years.ToString()}{startSmallString}y{endSmallString} ");
             if (days < 100) sb.Append(0);
@@ -82,6 +89,7 @@ namespace Countdown
             countdownText.text = sb.ToString();
         }
 
+        // Returns whether given year is a leap year
         private bool isLeapYear(int year)
         {
             if (year % 4 == 0)
