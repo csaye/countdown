@@ -15,6 +15,7 @@ namespace Countdown
         {
             active = !active;
             settingsCanvasGroup.alpha = active ? 1 : 0;
+            settingsCanvasGroup.interactable = active;
             settingsCanvasGroup.blocksRaycasts = active;
             text.text = active ? "Back" : "Settings";
         }

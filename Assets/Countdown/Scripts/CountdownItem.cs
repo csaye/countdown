@@ -14,21 +14,14 @@ namespace Countdown
         private const string startSmallString = "<size=32>", endSmallString = "</size>";
         private const string timeUpString = "0<size=32>d</size> 00<size=32>h</size> 00<size=32>m</size> 00<size=32>s</size>";
 
-        private DateTime countdownTime, currentDateTime, now;
+        private DateTime countdownTime, now;
         private TimeSpan countdownLength;
-        private int lastUpdateSecond = -1;
-        int years, days, hours, minutes, seconds;
-
-        private bool tickClock = false;
+        int days, hours, minutes, seconds;
 
         public void Initialize(string title, DateTime dateTime)
         {
             titleText.text = title;
             countdownTime = dateTime;
-            currentDateTime = DateTime.Now;
-            SetCountdownText();
-            // Start clock tick
-            tickClock = true;
         }
 
         public void Destroy()
@@ -36,27 +29,13 @@ namespace Countdown
             Destroy(gameObject);
         }
 
-        private void Update()
-        {
-            if (!tickClock) return;
-
-            // Necessary to ensure milliseconds of current time is zero
-            now = DateTime.Now;
-            currentDateTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
-            
-            // Only tick once a second
-            if (currentDateTime.Second == lastUpdateSecond) return;
-            lastUpdateSecond = currentDateTime.Second;
-            SetCountdownText();
-        }
-
-        private void SetCountdownText()
+        public void SetCountdownText(DateTime currentDateTime)
         {
             // If time reached, stop clock tick
             if (currentDateTime.CompareTo(countdownTime) >= 0)
             {
+                if (PlayerPrefs.GetInt("DeleteAutomatically", 0) == 1) Destroy();
                 countdownText.text = timeUpString;
-                tickClock = false;
                 return;
             }
 
