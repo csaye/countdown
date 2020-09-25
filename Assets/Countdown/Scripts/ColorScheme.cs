@@ -13,7 +13,7 @@ namespace Countdown
         // [Header("Min Color References")]
         // [Header("Special Color References")]
 
-        public static Color maxColor = new Color(), midColor = new Color(), minColor = new Color(), specialColor = new Color();
+        public static Color maxColor = new Color(), modColor = new Color(), midColor = new Color(), minColor = new Color(), specialColor = new Color();
 
         public enum Scheme
         {
@@ -45,6 +45,7 @@ namespace Countdown
         private void SetColor(ColorSchemeScriptable scheme)
         {
             SetMaxColor(scheme.maxColor);
+            SetModColor(scheme.modColor);
             SetMidColor(scheme.midColor);
             SetMinColor(scheme.minColor);
             SetSpecialColor(scheme.specialColor);
@@ -53,6 +54,11 @@ namespace Countdown
         private void SetMaxColor(Color color)
         {
             maxColor = color;
+        }
+
+        private void SetModColor(Color color)
+        {
+            modColor = color;
         }
 
         private void SetMidColor(Color color)

@@ -52,9 +52,16 @@ namespace Countdown
                 tickClock = false;
                 return;
             }
-            years = countdownTime.Year - currentDateTime.Year;
-            countdownLength = countdownTime - currentDateTime.AddYears(years);
+            int years = 0;
+            while (currentDateTime.Year + years < countdownTime.Year) years++;
+            countdownLength = countdownTime - currentDateTime;
             days = countdownLength.Days;
+            for (int i = 0; i < years - 1; i++)
+            {
+                int year = currentDateTime.Year + i;
+                int daysInYear = isLeapYear(year) ? 366 : 365;
+                days -= daysInYear;
+            }
             hours = countdownLength.Hours;
             minutes = countdownLength.Minutes;
             seconds = countdownLength.Seconds;
@@ -73,6 +80,17 @@ namespace Countdown
             sb.Append($"{seconds.ToString()}{startSmallString}s{endSmallString}");
 
             countdownText.text = sb.ToString();
+        }
+
+        private bool isLeapYear(int year)
+        {
+            if (year % 4 == 0)
+            {
+                if (year % 400 == 0) return true;
+                if (year % 100 == 0) return false;
+                return true;
+            }
+            return false;
         }
     }
 }

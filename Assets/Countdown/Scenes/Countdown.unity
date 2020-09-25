@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 3
   m_Viewport: {fileID: 4471278}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 304748640}
@@ -3938,8 +3938,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292926682
-  m_fontColor: {r: 0.85490197, g: 0.8627451, b: 0.8784314, a: 1}
+    rgba: 4285096800
+  m_fontColor: {r: 0.3764706, g: 0.3882353, b: 0.4117647, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4972,7 +4972,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 3
   m_Viewport: {fileID: 154199028}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 2103103105}
@@ -7497,7 +7497,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 3
   m_Viewport: {fileID: 339573107}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 434357996}
@@ -8499,7 +8499,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 3
   m_Viewport: {fileID: 1997574526}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1913472263}
@@ -9093,7 +9093,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 3
   m_Viewport: {fileID: 1265075592}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 381420779}
@@ -11009,7 +11009,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 3
   m_Viewport: {fileID: 1050114682}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1900602681}
@@ -11234,7 +11234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99c8e1901acb40d0ba945649bb990ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 1915557129}
+  dropdown: {fileID: 2080191692}
 --- !u!1 &2083947756
 GameObject:
   m_ObjectHideFlags: 0
