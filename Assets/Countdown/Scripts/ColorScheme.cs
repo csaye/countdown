@@ -13,7 +13,7 @@ namespace Countdown
         // [Header("Min Color References")]
         // [Header("Special Color References")]
 
-        public static Color maxColor = new Color(), modColor = new Color(), midColor = new Color(), minColor = new Color(), specialColor = new Color();
+        public static Color maxColor, modColor, midColor, minColor, specialColor;
 
         public enum Scheme
         {

@@ -11,6 +11,14 @@ namespace Countdown
         [SerializeField] private ColorScheme colorScheme = null;
         [SerializeField] private RectTransform arrowTransform = null;
 
+        private void Start()
+        {
+            if (PlayerPrefs.GetInt("ColorScheme", 0) == (int)scheme)
+            {
+                arrowTransform.position = new Vector2(transform.position.x, arrowTransform.position.y);
+            }
+        }
+
         public void OnClick()
         {
             if (PlayerPrefs.GetInt("ColorScheme", 0) == (int)scheme) return;
