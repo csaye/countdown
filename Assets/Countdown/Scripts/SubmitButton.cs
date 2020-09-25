@@ -11,23 +11,25 @@ namespace Countdown
         [SerializeField] private Button button = null;
         [SerializeField] private TextMeshProUGUI text = null;
         [SerializeField] private TMP_InputField titleInput = null;
-        [SerializeField] private TMP_Dropdown monthInput = null;
-        [SerializeField] private TMP_Dropdown dayInput = null;
-        [SerializeField] private TMP_Dropdown yearInput = null;
-        [SerializeField] private YearDropdown yearDropdown = null;
+        [SerializeField] private DateInput dateInput = null;
+        [SerializeField] private TimeInput timeInput = null;
         [SerializeField] private CountdownList countdownList = null;
 
         private DateTime dateTime;
 
         public void UpdateActive()
         {
-            int month = monthInput.value + 1;
-            int day = dayInput.value + 1;
-            int year = yearInput.value + yearDropdown.currentYear;
+            int year = dateInput.year;
+            int month = dateInput.month;
+            int day = dateInput.day;
+
+            int hour = timeInput.hour;
+            int minute = timeInput.minute;
+            int second = timeInput.second;
             
             try
             {
-                dateTime = new DateTime(year, month, day);
+                dateTime = new DateTime(year, month, day, hour, minute, second);
                 button.enabled = true;
                 text.color = ColorScheme.specialColor;
             }

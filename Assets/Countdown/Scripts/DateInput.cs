@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
-public class DateInput : MonoBehaviour
+namespace Countdown
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DateInput : MonoBehaviour
     {
-        
-    }
+        [Header("References")]
+        [SerializeField] private TMP_Dropdown yearDropdown = null;
+        [SerializeField] private TMP_Dropdown monthDropdown = null;
+        [SerializeField] private TMP_Dropdown dayDropdown = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public int year { get { return yearDropdown.value + 1; } }
+        public int month { get { return monthDropdown.value + 1; } }
+        public int day { get { return dayDropdown.value + 1; } }
     }
 }
