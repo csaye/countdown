@@ -12,6 +12,9 @@ namespace Countdown
         [SerializeField] private ColorSchemeScriptable darkMode = null;
 
         [Header("References")]
+        [SerializeField] private SubmitButton submitButton = null;
+
+        [Header("Color References")]
         [SerializeField] private List<Image> maxColorImages = new List<Image>();
         [SerializeField] private List<TextMeshProUGUI> maxColorTexts = new List<TextMeshProUGUI>();
         [SerializeField] private List<Image> modColorImages = new List<Image>();
@@ -52,6 +55,8 @@ namespace Countdown
                     SetColor(darkMode);
                     break;
             }
+
+            submitButton.UpdateActive();
         }
 
         private void SetColor(ColorSchemeScriptable scheme)
