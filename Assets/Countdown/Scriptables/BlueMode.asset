@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxColor: {r: 0.08235294, g: 0.39607844, b: 0.7529412, a: 1}
   modColor: {r: 0.11764706, g: 0.53333336, b: 0.8980392, a: 1}
-  midColor: {r: 0.25882354, g: 0.64705884, b: 0.9607843, a: 1}
+  midColor: {r: 0.39215687, g: 0.70980394, b: 0.9647059, a: 1}
   minColor: {r: 0.73333335, g: 0.87058824, b: 0.9843137, a: 1}
