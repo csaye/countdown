@@ -36,7 +36,7 @@ namespace Countdown
                 button.interactable = true;
                 text.color = lightMode.minColor;
             }
-            // Return if invalid date given
+            // Return if invalid date or title given
             catch
             {
                 button.interactable = false;
