@@ -11,6 +11,7 @@ namespace Countdown
         [SerializeField] private ColorSchemeScriptable lightMode = null;
         [SerializeField] private ColorSchemeScriptable darkMode = null;
         [SerializeField] private ColorSchemeScriptable blueMode = null;
+        [SerializeField] private ColorSchemeScriptable indigoMode = null;
 
         [Header("References")]
         [SerializeField] private SubmitButton submitButton = null;
@@ -31,7 +32,8 @@ namespace Countdown
         {
             LightMode,
             DarkMode,
-            BlueMode
+            BlueMode,
+            IndigoMode
         }
 
         private void Start()
@@ -56,6 +58,9 @@ namespace Countdown
                     break;
                 case Scheme.BlueMode:
                     SetColor(blueMode);
+                    break;
+                case Scheme.IndigoMode:
+                    SetColor(indigoMode);
                     break;
             }
 

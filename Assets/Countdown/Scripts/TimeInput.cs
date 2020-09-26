@@ -26,14 +26,6 @@ namespace Countdown
 
         private bool useTwelveHourTime = false;
 
-        private void Start()
-        {
-            for (int i = 0; i < 24; i++)
-            {
-                hourDropdown.options[i].text = i < 10 ? "0" + i.ToString() : i.ToString();
-            }
-        }
-
         public void UpdateTimeDisplay()
         {
             useTwelveHourTime = (PlayerPrefs.GetInt("UseTwelveHourTime", 0) == 1);
