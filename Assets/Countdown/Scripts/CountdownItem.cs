@@ -18,14 +18,18 @@ namespace Countdown
         private TimeSpan countdownLength;
         int days, hours, minutes, seconds;
 
-        public void Initialize(string title, DateTime dateTime)
+        private CountdownList countdownList;
+
+        public void Initialize(CountdownList _countdownList, string title, DateTime dateTime)
         {
+            countdownList = _countdownList;
             titleText.text = title;
             countdownTime = dateTime;
         }
 
         public void Destroy()
         {
+            countdownList.UpdateCountdowns();
             Destroy(gameObject);
         }
 

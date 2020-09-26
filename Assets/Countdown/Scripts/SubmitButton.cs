@@ -52,7 +52,7 @@ namespace Countdown
 
         public void OnClick()
         {
-            countdownList.CreateCountdown(titleInput.text, dateTime);
+            countdownList.CreateCountdown(titleInput.text, dateTime, true);
         }
     }
 }

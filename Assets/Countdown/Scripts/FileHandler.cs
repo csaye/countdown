@@ -19,8 +19,8 @@ namespace Countdown
 
     public class FileHandler : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private CountdownList countdownList = null;
+        // [Header("References")]
+        // [SerializeField] private CountdownList countdownList = null;
 
         private List<CountdownObject> countdowns = new List<CountdownObject>();
 
@@ -32,16 +32,9 @@ namespace Countdown
             countdowns.Add(countdown);
         }
 
-        public void RemoveCountdown(string title, DateTime dateTime)
+        public void RemoveCountdownAt(int index)
         {
-            for (int i = 0; i < countdowns.Count; i++)
-            {
-                if (countdowns[i].title == title && countdowns[i].dateTime == dateTime)
-                {
-                    countdowns.RemoveAt(i);
-                    break;
-                }
-            }
+            countdowns.RemoveAt(index);
         }
 
         private void WriteFile()
@@ -81,8 +74,8 @@ namespace Countdown
         private void Start()
         {
             GetPath();
-            ReadFile();
-            countdownList.Initialize(countdowns.ToArray());
+            // ReadFile();
+            // countdownList.Initialize(countdowns.ToArray());
         }
 
         private void OnApplicationQuit()

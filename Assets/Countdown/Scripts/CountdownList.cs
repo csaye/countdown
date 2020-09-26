@@ -8,6 +8,7 @@ namespace Countdown
     {
         [Header("References")]
         [SerializeField] private GameObject countdownPrefab = null;
+        [SerializeField] private FileHandler fileHandler = null;
 
         private List<CountdownItem> countdowns = new List<CountdownItem>();
         private DateTime now, currentDateTime;
@@ -17,18 +18,19 @@ namespace Countdown
         {
             foreach (CountdownObject countdown in countdowns)
             {
-                CreateCountdown(countdown.title, countdown.dateTime);
+                CreateCountdown(countdown.title, countdown.dateTime, false);
             }
         }
 
         // Creates and initializes a new countdown item object
-        public void CreateCountdown(string title, DateTime time)
+        public void CreateCountdown(string title, DateTime dateTime, bool addToFile)
         {
             GameObject countdownObj = Instantiate(countdownPrefab, transform.position, Quaternion.identity, transform);
             CountdownItem countdownItem = countdownObj.GetComponent<CountdownItem>();
-            countdownItem.Initialize(title, time);
+            countdownItem.Initialize(this, title, dateTime);
             countdowns.Add(countdownItem);
             countdownObj.transform.SetSiblingIndex(0);
+            if (addToFile) fileHandler.AddCountdown(title, dateTime);
             UpdateCountdowns();
         }
 
@@ -50,6 +52,7 @@ namespace Countdown
                 if (countdowns[i] == null)
                 {
                     countdowns.RemoveAt(i);
+                    fileHandler.RemoveCountdownAt(i);
                     i--;
                     continue;
                 }
