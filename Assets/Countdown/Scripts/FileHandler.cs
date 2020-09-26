@@ -19,8 +19,8 @@ namespace Countdown
 
     public class FileHandler : MonoBehaviour
     {
-        // [Header("References")]
-        // [SerializeField] private CountdownList countdownList = null;
+        [Header("References")]
+        [SerializeField] private CountdownList countdownList = null;
 
         private List<CountdownObject> countdowns = new List<CountdownObject>();
 
@@ -43,7 +43,10 @@ namespace Countdown
             foreach (CountdownObject countdown in countdowns)
             {
                 writer.WriteLine(countdown.title);
-                writer.WriteLine(countdown.dateTime);
+                DateTime dt = countdown.dateTime;
+                // Convert DateTime into easily parsable format
+                string dateTimeString = $"{dt.Year}/{dt.Month}/{dt.Day}/{dt.Hour}/{dt.Minute}/{dt.Second}";
+                writer.WriteLine(dateTimeString);
             }
             writer.Close();
         }
@@ -53,15 +56,45 @@ namespace Countdown
             StreamReader reader = new StreamReader(path);
             countdowns.Clear();
             string content = reader.ReadToEnd();
-            string[] lines = content.Split('\n');
+            // Split lines by line breaks
+            string[] rawLines = content.Split('\n');
+            string[] lines = GetValidLines(rawLines);
+            // Take lines in pairs
             for (int i = 0; i < lines.Length; i += 2)
             {
-                // string title = lines[i];
-                // string dateTime = new DateTime(lines[i + 1]);
-                CountdownObject countdown = new CountdownObject();
+                // Get title from first line
+                string title = lines[i];
+                // Parse DateTime value from string
+                string dateTimeString = lines[i + 1];
+                DateTime dateTime = ParseDateTime(dateTimeString);
+                // Create and add new countdown object with parsed parameters
+                CountdownObject countdown = new CountdownObject(title, dateTime);
                 countdowns.Add(countdown);
             }
             reader.Close();
+        }
+
+        // Takes a string array and returns all of its non-null and non-whitespace strings
+        private string[] GetValidLines(string[] array)
+        {
+            List<string> lines = new List<string>();
+            foreach (string s in array)
+            {
+                if (!string.IsNullOrWhiteSpace(s)) lines.Add(s);
+            }
+            return lines.ToArray();
+        }
+
+        // Takes a string representing date and time in y/mo/d/h/mi/s format and returns a DateTime object
+        private DateTime ParseDateTime(string dateTimeString)
+        {
+            string[] dtStrs = dateTimeString.Split('/');
+            int[] dtInts = new int[dtStrs.Length];
+            for (int i = 0; i < dtInts.Length; i++)
+            {
+                dtInts[i] = int.Parse(dtStrs[i]);
+            }
+            return new DateTime(dtInts[0], dtInts[1], dtInts[2], dtInts[3], dtInts[4], dtInts[5]);
         }
 
         private void GetPath()
@@ -74,8 +107,8 @@ namespace Countdown
         private void Start()
         {
             GetPath();
-            // ReadFile();
-            // countdownList.Initialize(countdowns.ToArray());
+            ReadFile();
+            countdownList.Initialize(countdowns.ToArray());
         }
 
         private void OnApplicationQuit()
