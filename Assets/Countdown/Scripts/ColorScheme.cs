@@ -10,6 +10,7 @@ namespace Countdown
         [Header("Attributes")]
         [SerializeField] private ColorSchemeScriptable lightMode = null;
         [SerializeField] private ColorSchemeScriptable darkMode = null;
+        [SerializeField] private ColorSchemeScriptable blueMode = null;
 
         [Header("References")]
         [SerializeField] private SubmitButton submitButton = null;
@@ -23,15 +24,14 @@ namespace Countdown
         [SerializeField] private List<TextMeshProUGUI> midColorTexts = new List<TextMeshProUGUI>();
         [SerializeField] private List<Image> minColorImages = new List<Image>();
         [SerializeField] private List<TextMeshProUGUI> minColorTexts = new List<TextMeshProUGUI>();
-        [SerializeField] private List<Image> specialColorImages = new List<Image>();
-        [SerializeField] private List<TextMeshProUGUI> specialColorTexts = new List<TextMeshProUGUI>();
 
-        public static Color maxColor, modColor, midColor, minColor, specialColor;
+        public static Color maxColor, modColor, midColor, minColor;
 
         public enum Scheme
         {
             LightMode,
-            DarkMode
+            DarkMode,
+            BlueMode
         }
 
         private void Start()
@@ -54,6 +54,9 @@ namespace Countdown
                 case Scheme.DarkMode:
                     SetColor(darkMode);
                     break;
+                case Scheme.BlueMode:
+                    SetColor(blueMode);
+                    break;
             }
 
             submitButton.UpdateActive();
@@ -65,7 +68,6 @@ namespace Countdown
             SetModColor(scheme.modColor);
             SetMidColor(scheme.midColor);
             SetMinColor(scheme.minColor);
-            SetSpecialColor(scheme.specialColor);
         }
 
         private void SetMaxColor(Color color)
@@ -94,13 +96,6 @@ namespace Countdown
             minColor = color;
             foreach (Image image in minColorImages) image.color = color;
             foreach (TextMeshProUGUI text in minColorTexts) text.color = color;
-        }
-
-        private void SetSpecialColor(Color color)
-        {
-            specialColor = color;
-            foreach (Image image in specialColorImages) image.color = color;
-            foreach (TextMeshProUGUI text in specialColorTexts) text.color = color;
         }
     }
 }

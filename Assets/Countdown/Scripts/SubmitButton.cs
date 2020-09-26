@@ -14,6 +14,7 @@ namespace Countdown
         [SerializeField] private DateInput dateInput = null;
         [SerializeField] private TimeInput timeInput = null;
         [SerializeField] private CountdownList countdownList = null;
+        [SerializeField] private ColorSchemeScriptable lightMode = null;
 
         private DateTime dateTime;
 
@@ -23,7 +24,7 @@ namespace Countdown
             if (string.IsNullOrWhiteSpace(titleInput.text))
             {
                 button.interactable = false;
-                text.color = ColorScheme.midColor;
+                text.color = lightMode.midColor;
                 return;
             }
 
@@ -39,13 +40,13 @@ namespace Countdown
             {
                 dateTime = new DateTime(year, month, day, hour, minute, second);
                 button.interactable = true;
-                text.color = ColorScheme.specialColor;
+                text.color = lightMode.minColor;
             }
             // Return if invalid date given
             catch
             {
                 button.interactable = false;
-                text.color = ColorScheme.midColor;
+                text.color = lightMode.midColor;
             }
         }
 
