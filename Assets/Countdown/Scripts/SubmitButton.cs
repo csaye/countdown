@@ -20,14 +20,6 @@ namespace Countdown
 
         public void UpdateActive()
         {
-            // Return if no title given
-            if (string.IsNullOrWhiteSpace(titleInput.text))
-            {
-                button.interactable = false;
-                text.color = lightMode.midColor;
-                return;
-            }
-
             int year = dateInput.year;
             int month = dateInput.month;
             int day = dateInput.day;
@@ -39,6 +31,8 @@ namespace Countdown
             try
             {
                 dateTime = new DateTime(year, month, day, hour, minute, second);
+                // Throw exception if no title given
+                if (string.IsNullOrWhiteSpace(titleInput.text)) throw new ArgumentException();
                 button.interactable = true;
                 text.color = lightMode.minColor;
             }
@@ -52,6 +46,7 @@ namespace Countdown
 
         public void OnClick()
         {
+            // UpdateActive();
             countdownList.CreateCountdown(titleInput.text, dateTime, true);
         }
     }

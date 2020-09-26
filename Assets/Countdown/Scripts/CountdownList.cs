@@ -22,7 +22,7 @@ namespace Countdown
             }
         }
 
-        // Creates and initializes a new countdown item object
+        // Instantiates and initializes a new countdown item object
         public void CreateCountdown(string title, DateTime dateTime, bool addToFile)
         {
             GameObject countdownObj = Instantiate(countdownPrefab, transform.position, Quaternion.identity, transform);

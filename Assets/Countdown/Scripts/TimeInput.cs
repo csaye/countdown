@@ -29,7 +29,6 @@ namespace Countdown
         public void UpdateTimeDisplay()
         {
             useTwelveHourTime = (PlayerPrefs.GetInt("UseTwelveHourTime", 0) == 1);
-
             // Activate dropdowns based on time system
             ampmDropdown.gameObject.SetActive(useTwelveHourTime);
             twelveHourDropdown.gameObject.SetActive(useTwelveHourTime);
