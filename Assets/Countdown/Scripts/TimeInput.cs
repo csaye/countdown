@@ -34,9 +34,9 @@ namespace Countdown
             ampmDropdown.gameObject.SetActive(useTwelveHourTime);
             twelveHourDropdown.gameObject.SetActive(useTwelveHourTime);
             hourDropdown.gameObject.SetActive(!useTwelveHourTime);
-
+            // Move time input bar over to account for size of AM PM dropdown
             RectTransform rectTransform = (RectTransform)transform;
-            rectTransform.localPosition = useTwelveHourTime ? new Vector2(-35, 0) : Vector2.zero;
+            rectTransform.localPosition = useTwelveHourTime ? new Vector2(-33, 0) : Vector2.zero;
         }
     }
 }
