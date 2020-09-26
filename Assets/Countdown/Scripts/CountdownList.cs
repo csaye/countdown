@@ -13,6 +13,14 @@ namespace Countdown
         private DateTime now, currentDateTime;
         private int lastUpdateSecond = -1;
 
+        public void Initialize(CountdownObject[] countdowns)
+        {
+            foreach (CountdownObject countdown in countdowns)
+            {
+                CreateCountdown(countdown.title, countdown.dateTime);
+            }
+        }
+
         // Creates and initializes a new countdown item object
         public void CreateCountdown(string title, DateTime time)
         {
